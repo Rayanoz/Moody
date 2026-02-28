@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { openai } from "@/lib/openai";
+import { getOpenAIClient } from "@/lib/openai";
 import { COMPANION_SYSTEM_PROMPT } from "@/lib/prompts";
 
 export async function POST(req: NextRequest) {
@@ -12,6 +12,8 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    const openai = getOpenAIClient();
 
     const result = await openai.chat.completions.create({
       model: "gpt-4o-mini",

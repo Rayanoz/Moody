@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { openai } from "@/lib/openai";
+import { getOpenAIClient } from "@/lib/openai";
 import { INSIGHTS_SYSTEM_PROMPT } from "@/lib/prompts";
 
 export async function POST(req: NextRequest) {
@@ -21,6 +21,8 @@ export async function POST(req: NextRequest) {
     const moodSummary = moods
       ?.map((m: { date: string; score: number; emoji: string }) => `${m.date}: ${m.emoji} (${m.score}/5)`)
       .join(", ");
+
+    const openai = getOpenAIClient();
 
     const result = await openai.chat.completions.create({
       model: "gpt-4o-mini",

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { openai } from "@/lib/openai";
+import { getOpenAIClient } from "@/lib/openai";
 import { SENTIMENT_SYSTEM_PROMPT, COMPANION_SYSTEM_PROMPT } from "@/lib/prompts";
 
 export async function POST(req: NextRequest) {
@@ -14,6 +14,8 @@ export async function POST(req: NextRequest) {
     }
 
     const plainText = content.replace(/<[^>]*>/g, "");
+
+    const openai = getOpenAIClient();
 
     const [sentimentResult, companionResult] = await Promise.all([
       openai.chat.completions.create({
