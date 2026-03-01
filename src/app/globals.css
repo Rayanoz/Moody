@@ -62,24 +62,7 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Landing page dark theme scope */
-.landing-dark {
-  --background: #0B1120;
-  --foreground: #E2E8F0;
-  --card: #141C2E;
-  --card-foreground: #E2E8F0;
-  --muted: #1A2436;
-  --muted-foreground: #94A3B8;
-  --border: #1E293B;
-  --primary: #7C9A8E;
-  --primary-foreground: #FFFFFF;
-  --accent: #E8B86D;
-  --accent-foreground: #0B1120;
-  background: var(--background);
-  color: var(--foreground);
-}
-
-@keyframes aurora {
+@keyframes aurora-light {
   0% { background-position: 0% 50%; }
   25% { background-position: 50% 100%; }
   50% { background-position: 100% 50%; }
@@ -87,20 +70,20 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-.aurora-bg {
+.aurora-bg-light {
   background: linear-gradient(
     135deg,
-    #0B1120 0%,
-    #132040 15%,
-    #1a3a2a 30%,
-    #0B1120 45%,
-    #2a1a10 60%,
-    #0B1120 75%,
-    #0f2840 90%,
-    #0B1120 100%
+    #FAFAF8 0%,
+    #EEF2EF 15%,
+    #F0F4F8 30%,
+    #FAFAF8 45%,
+    #F5F0E8 60%,
+    #FAFAF8 75%,
+    #EDF1EE 90%,
+    #FAFAF8 100%
   );
   background-size: 400% 400%;
-  animation: aurora 20s ease infinite;
+  animation: aurora-light 20s ease infinite;
 }
 
 @keyframes float {
@@ -125,7 +108,7 @@ body {
   100% { background-position: 200% 0; }
 }
 
-.shimmer-text {
+.shimmer-text-light {
   background: linear-gradient(90deg, #7C9A8E, #E8B86D, #8AAEC4, #7C9A8E);
   background-size: 200% auto;
   -webkit-background-clip: text;
