@@ -18,6 +18,15 @@ import {
   Send,
 } from "lucide-react";
 
+const CYCLING_PHRASES = [
+  "Feeling anxious?",
+  "Overwhelmed?",
+  "Lost?",
+  "Burned out?",
+  "Disconnected?",
+  "Carrying too much?",
+];
+
 const MARQUEE_FEATURES = [
   "AI Journaling",
   "Mood Tracking",
@@ -73,6 +82,35 @@ function FadeIn({
     >
       {children}
     </motion.div>
+  );
+}
+
+function CyclingText() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(
+      () => setIndex((i) => (i + 1) % CYCLING_PHRASES.length),
+      2500
+    );
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="h-7 overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+          className="block text-base text-[#636E72]"
+        >
+          {CYCLING_PHRASES[index]} —{" "}
+          <span className="text-[#7C9A8E] font-medium">You&apos;re in the right place.</span>
+        </motion.span>
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -234,38 +272,32 @@ export default function LandingPage() {
 
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <FadeIn>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#7C9A8E]/[0.08] border border-[#7C9A8E]/[0.15] px-4 py-1.5 text-xs font-medium text-[#7C9A8E] mb-8">
-              Your mental wellness companion
-            </span>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[1.08] text-[#2D3436] mb-6">
-              Find <span className="text-[#7C9A8E]">Peace</span>
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-[#2D3436] mb-6">
+              Your mind deserves
               <br />
-              Through Writing
+              <span className="text-[#7C9A8E]">a place to breathe.</span>
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <p className="mx-auto max-w-lg text-base md:text-lg text-[#636E72] mb-10 leading-relaxed">
-              Automatically understand your emotions and track your mental
-              wellness, helping build habits that boost resilience.
+          <FadeIn delay={0.15}>
+            <p className="mx-auto max-w-xl text-lg md:text-xl text-[#636E72] mb-6 leading-relaxed">
+              Write freely. Understand yourself. Feel better — with AI that
+              actually listens.
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <FadeIn delay={0.25}>
+            <CyclingText />
+          </FadeIn>
+
+          <FadeIn delay={0.35}>
+            <div className="mt-8">
               <Link href="/signup">
-                <button className="rounded-full bg-[#7C9A8E] px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#7C9A8E]/25 transition-all hover:bg-[#6B8A7D] hover:shadow-xl hover:shadow-[#7C9A8E]/30 cursor-pointer">
-                  Get Started
+                <button className="inline-flex items-center gap-2 rounded-full bg-[#2D3436] px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#2D3436]/20 transition-all hover:bg-[#3D4D4F] hover:shadow-xl hover:shadow-[#2D3436]/25 cursor-pointer">
+                  Start Writing — It&apos;s Free
+                  <ArrowRight className="h-4 w-4" />
                 </button>
               </Link>
-              <a href="#features">
-                <button className="inline-flex items-center gap-2 rounded-full border border-[#E2E0DC] px-8 py-3.5 text-base font-medium text-[#636E72] transition-all hover:border-[#7C9A8E] hover:text-[#2D3436] cursor-pointer">
-                  Learn more <ArrowRight className="h-4 w-4" />
-                </button>
-              </a>
             </div>
           </FadeIn>
         </div>
