@@ -272,6 +272,12 @@ export default function LandingPage() {
 
         <div className="relative mx-auto max-w-5xl px-6 text-center">
           <FadeIn>
+            <div className="inline-flex items-center rounded-full bg-white/60 backdrop-blur-sm border border-[#E2E0DC] px-5 py-2 shadow-sm mb-8">
+              <CyclingText />
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
             <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-[#2D3436] mb-6">
               Your mind deserves
               <br />
@@ -279,15 +285,11 @@ export default function LandingPage() {
             </h1>
           </FadeIn>
 
-          <FadeIn delay={0.15}>
+          <FadeIn delay={0.2}>
             <p className="mx-auto max-w-xl text-lg md:text-xl text-[#636E72] mb-6 leading-relaxed">
               Write freely. Understand yourself. Feel better — with AI that
               actually listens.
             </p>
-          </FadeIn>
-
-          <FadeIn delay={0.25}>
-            <CyclingText />
           </FadeIn>
 
           <FadeIn delay={0.35}>
